@@ -47,6 +47,12 @@ def main ():
 	if name.strip() == '':
 		name = random.choice (names)
 	try:
+		smart = requests.post ('https://romantiki63.ru/bitrix/components/citrus.forms/base/ajax.php', data = {'FIELDS[NAME]' : name, 'FIELDS[PROPERTY_phone]' : phoneNum})
+		print(Fore.GREEN + 'Вам позвонят романтики, ждите!')
+	except:
+		print(Fore.RED + 'Вам не позвонят :(')
+
+	try:
 		smart = requests.post ('http://smart-lift.com.ua/1.php', data = {'txtname' : name, 'txtphone' : phoneNum, 'valTrFal' : 'valTrFal_true', 'test' : ''})
 		print(Fore.GREEN + 'Вам позвонят, ждите!')
 	except:
